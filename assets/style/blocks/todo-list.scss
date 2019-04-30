@@ -1,0 +1,35 @@
+.todo-list {
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-content: center;
+}
+
+.todo-list__header {
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+	min-height: 200px;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #DFF;
+}
+
+.todo-list__button {
+	margin-top: 10px;
+	align-self: flex-start;
+	background-color: #FFF;
+	border: 1px solid black;
+}
+
+.todo-list__header-text {
+}
+
+.todo-list__text {
+	flex: auto;
+	margin-top: 5px;
+}
+
