@@ -1,16 +1,19 @@
-
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const devMode = process.env.NODE_ENV !== 'production';
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const devMode = process.env.NODE_ENV !== "production";
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  entry: './assets/js/index.js',
+  entry: "./assets/js/index.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
   },
   module: {
     rules: [
@@ -25,23 +28,23 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ['css-loader', 'sass-loader']
+          use: ["css-loader", "sass-loader"]
         })
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'assets/index.html'
+      template: "assets/index.html"
     }),
     new ExtractTextPlugin({
-     filename: 'style.css'
+      filename: "style.css"
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
+      cssProcessor: require("cssnano"),
       cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
+        preset: ["default", { discardComments: { removeAll: true } }]
       },
       canPrint: true
     })
